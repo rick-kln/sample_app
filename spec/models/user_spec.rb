@@ -15,7 +15,7 @@ describe User do
     User.create!(@attr)
   end
 
-  it "should require a name"
+  it "should require a name" do
     no_name_user = User.new(@attr.merge(:name => ""))
     no_name_user.should_not be_valid
   end
@@ -111,7 +111,6 @@ describe User do
     end
     
     describe "authenticate method" do
-
       it "should return nil on email/password mismatch" do
         wrong_password_user = User.authenticate(@attr[:email], "wrongpass")
         wrong_password_user.should be_nil
@@ -126,8 +125,7 @@ describe User do
         matching_user = User.authenticate(@attr[:email], @attr[:password])
         matching_user.should == @user
       end
-    end
-    
+    end    
   end
     
 end
